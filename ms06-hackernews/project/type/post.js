@@ -3,7 +3,7 @@ var Schema = mongoose.Schema
 
 var postSchema = new Schema ({
     name: String,
-    url: url,
+    url: String,
     title: String
 })
 

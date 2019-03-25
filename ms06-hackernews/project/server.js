@@ -5,12 +5,14 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost:27017/slackernews', {useNewUrlParser: true}).then(res => console.log('MongiDB connected')).catch(err => console.log("Err at connrction with mongo ", err))
+mongoose.set('useCreateIndex', true);
+mongoose.connect('mongodb://localhost:27017/slackernews', {useNewUrlParser: true}).then(res => console.log('MongoDB connected')).catch(err => console.log("Err at connrction with mongo ", err))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended:true
 }))
+// app.use(session({secret:"iduhu32y3h42eqklj24kejen1", resave:false, saveUninitialized:true}))
 
 app.set('view engine', 'ejs')
 

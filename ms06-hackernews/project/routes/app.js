@@ -68,7 +68,12 @@ router.post('/addpost', function(req, res) {
   post.title = req.body.title,
   post.body = req.body.body,
 
-post.save().then(post=> console.log('new post ', post)).catch(err => console.log(err));
+post.save()
+.then(post=> console.log('new post ', post))
+.catch(err =>{
+  console.log(err);
+  res.sendStatus(500);
+});
 
 // Post.find({}, function(err, posts) {
 //   if (err) {

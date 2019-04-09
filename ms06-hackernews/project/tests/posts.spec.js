@@ -19,12 +19,17 @@ describe('Posts Modules', function(){
     // The response has to be a failure with proper error message that says
     // "Needs authentication"
 
-    return request('http://localhost:8080/addpost')
+    return request({
+      method: 'POST',
+      uri: 'http://localhost:8080/addpost',
+      body: {},
+      json: true // Automatically stringifies the body to JSON
+    })
     .then(function(res){
       expect(res).toBeNotDefined();
     })
-    .catch(err=>{
-      expect(err.statusCode).toEqual(500);
+    .catch(RES=>{
+      expect(RES.statusCode).toEqual(500);
     })
 
   })
